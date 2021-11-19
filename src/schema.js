@@ -35,10 +35,12 @@ const typeDefs = gql`
     author: Author!
     "The track's illustration to display in track card or track page detail"
     thumbnail: String
-    "The track's approximate length to complete, in minutes"
-    length: Int
+    "The track's approximate length to complete, in seconds"
+    length: Int @deprecated (reason:"use durationInSeconds in stead")
     "The number of modules this track contains"
     modulesCount: Int
+    "number of seconds of the mission "
+    durationInSeconds:Int
     "The track's complete description, can be in markdown format"
     description: String
     "The number of times a track has been viewed"
@@ -61,12 +63,14 @@ const typeDefs = gql`
     id: ID!
     "The module's title"
     title: String!
-    "The module's length in minutes"
-    length: Int
+    "The module's length in seconds"
+    length: Int @deprecated (reason:"use durationInSeconds in stead")
     "The module's text-based description, can be in markdown format. In case of a video, it will be the enriched transcript"
     content: String
     "The module's video url, for video-based modules"
     videoUrl: String
+    "field shows duration of the trip"
+    durationInSeconds:Int
   }
 `;
 
